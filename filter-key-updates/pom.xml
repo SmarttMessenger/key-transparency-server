@@ -56,49 +56,6 @@
       <artifactId>kinesis</artifactId>
     </dependency>
     <dependency>
-      <!-- resolve a dependency resolution conflict by preferring the newer, direct,
-           versions from software.amazon.awssdk:apache-client. When apache-client updates the httpclient version,
-           dependency convergence will fail, and we can re-evaluate these exclusions.
-           -->
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.13</version>
-      <exclusions>
-        <exclusion>
-          <!--
-          +-org.signal:filter-key-updates-lambda:jar
-            +-software.amazon.awssdk:kinesis:jar:2.31.18:compile
-              +-software.amazon.awssdk:apache-client:jar:2.31.18:runtime
-                +-org.apache.httpcomponents:httpclient:jar:4.5.13:runtime
-                  +-org.apache.httpcomponents:httpcore:jar:4.4.13:runtime
-          and
-          +-org.signal:filter-key-updates-lambda:jar
-            +-software.amazon.awssdk:kinesis:jar:2.31.18:compile
-              +-software.amazon.awssdk:apache-client:jar:2.31.18:runtime
-                +-org.apache.httpcomponents:httpcore:jar:4.4.16:runtime
-          -->
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpcore</artifactId>
-        </exclusion>
-        <exclusion>
-          <!--
-          +-org.signal:filter-key-updates-lambda
-            +-software.amazon.awssdk:kinesis:2.31.18
-                +-software.amazon.awssdk:apache-client:2.31.18
-                    +-org.apache.httpcomponents:httpclient:4.5.13
-                        +-commons-codec:commons-codec:1.11
-          and
-          +-org.signal:filter-key-updates-lambda
-            +-software.amazon.awssdk:kinesis:2.31.18
-                +-software.amazon.awssdk:apache-client:2.31.18
-                    +-commons-codec:commons-codec:1.17.1
-          -->
-          <groupId>commons-codec</groupId>
-          <artifactId>commons-codec</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.22.1</version>
